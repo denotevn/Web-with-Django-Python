@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -6,4 +7,10 @@ def login(request):
    return render(request, 'login.html')
 
 def index(request):
-    return render(request,'index.html')
+    context = {
+        'name':'Tuan Dinh',
+        'age':23,
+        'nationality':'VietNam',
+    }
+
+    return render(request,'index.html', context)
