@@ -1,6 +1,9 @@
 <h1>Input your text below: </h1>
 
-<form method="" action="counter">
+<form method="POST" action="counter">
+    <!-- dong nay tranh tan cong csrf -->
+    {% csrf_token %} <!-- Neu khong co dong nay khi run se bi loi vi minh su dung POST -->
     <textarea name="text" rows="25" cols="100"></textarea><br>
     <input type="submit"/>
 </form>
+
