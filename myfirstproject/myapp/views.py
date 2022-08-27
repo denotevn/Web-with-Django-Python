@@ -7,13 +7,7 @@ def login(request):
    return render(request, 'login.html')
 
 def index(request):
-    context = {
-        'name':'Tuan Dinh',
-        'age':23,
-        'nationality':'VietNam',
-    }
-
-    return render(request,'index.html', context)
+    return render(request,'index.html')
 
 def counter(request):
     text = request.POST['text'] # text is nametype of <form .... in index.html
