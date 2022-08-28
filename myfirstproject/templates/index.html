@@ -105,16 +105,6 @@
             <div class="icon"><i class="ri-stack-line"></i></div>
             <h4 class="title"><a href="">{{feature.name}}</a></h4>
             <p class="description">{{feature.details}}</p>
-            {% if feature.is_true == True %}
-            <p><b>This feature is True</b></p>
-            {% else %}
-            <p><b>This feature is False</b></p>
-            {% endif %}
-
-            <!--You can do that for quickly
-            <p><b>The feature is {{feature.is_true}}<b><P>
-            -->
-
           </div>
         </div>
         {% endfor %} 
