@@ -78,7 +78,13 @@ def logout(request):
     return redirect('/')
 
 def counter(request):
-    text = request.POST['text'] # text is nametype of <form .... in index.html
-    amount_of_word = len(text.split())
+    # text = request.POST['text'] # text is nametype of <form .... in index.html
+    # amount_of_word = len(text.split())
     ## Sau khi tinh xong thi can gui thang "amount_of_words" vao file "counter.html"
-    return render(request, 'counter.html', {'amount':amount_of_word})
+    posts = [1,2,3,4,5,'Tuan','admin'] 
+    # Giai quy van de Url Routing cho ca str va int
+
+    return render(request, 'counter.html', {'posts':posts})
+
+def post(request,pk):
+    return render(request, 'post.html', {'pk':pk})
