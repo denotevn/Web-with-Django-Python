@@ -5,6 +5,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect # chuyen huong sang trang khac neu thoa man dieu kien
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+# for login
+from django.contrib.auth.forms import AuthenticationForm #add this
+from django.contrib.auth import login, authenticate #add this
 
 # When you cretaed model in models.py you can import it here
 from .models import Feature
@@ -52,6 +55,27 @@ def register(request):
     else:
         # save data to database
         return render(request, 'register.html')   
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/')
+        else:
+            message.info(request, 'Credentials Invalid')
+            return redirect('login')
+    else:
+        return render(request, 'login.html')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 
 def counter(request):
     text = request.POST['text'] # text is nametype of <form .... in index.html
